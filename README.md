@@ -1,55 +1,55 @@
-# Smart Sales Prediction System - Machine Learning Module
+# Smart Sales Prediction System - Data Analysis Module
 
-This module handles only model development and evaluation for the Smart Sales Prediction System.
+This module covers the data analysis workflow for the Smart Sales Prediction System using `Advertising.csv`.
 
 ## What it does
 
-- Loads `Advertising.csv`
-- Removes `Campaign_ID`
-- Cleans numeric and categorical fields
-- One-hot encodes `Region`
-- Trains these models:
-  - Linear Regression
-  - Decision Tree Regressor
-  - Random Forest Regressor
-- Evaluates each model with:
-  - MAE
-  - MSE
-  - RMSE
-  - R² Score
-- Saves the best fitted model to `models/sales_model.pkl`
-- Saves model comparison metrics to `results/model_results.csv`
+- Loads the dataset with Pandas.
+- Displays the shape, head, info, and descriptive statistics.
+- Removes `Campaign_ID`.
+- Cleans currency markers, extra spaces, and inconsistent region values.
+- Converts advertising budgets and sales to numeric floats.
+- Checks missing values, duplicate rows, and incorrect data types.
+- Saves the cleaned dataset to `data/cleaned_advertising.csv`.
+- Generates exploratory data analysis charts in `outputs/graphs/`.
+- Summarizes the main insights in markdown inside the notebook.
 
 ## Files
 
-- `src/common.py` - reusable data cleaning, preprocessing, training, and saving helpers
-- `src/train_model.py` - trains all candidate models and saves the best one
-- `src/evaluate_model.py` - evaluates the saved best model on the test split
+- `src/data_loader.py` - dataset loading and overview helpers
+- `src/preprocessing.py` - cleaning, quality checks, and cleaned-data export
+- `src/eda.py` - chart generation and markdown insight helpers
+- `sales_analysis.ipynb` - walkthrough notebook for the full analysis
 
 ## Requirements
 
-Install the following Python packages if they are not already available:
+Install these packages if they are not already available:
 
 - `pandas`
-- `scikit-learn`
-- `joblib`
+- `matplotlib`
+- `seaborn`
+- `ipython`
+- `jupyter`
 
 ## Run
 
-Train models and generate outputs:
+Open the notebook and run all cells:
 
 ```bash
-python src/train_model.py
+jupyter notebook sales_analysis.ipynb
 ```
 
-Evaluate the saved best model:
+Or run the analysis logic from a Python session using the functions in `src/`.
 
-```bash
-python src/evaluate_model.py
-```
+## Outputs
 
-## Notes
-
-- Missing target values are removed before training.
-- Missing feature values are handled through median or most-frequent imputation inside the pipeline.
-- The saved model includes preprocessing, so it can be used directly for prediction.
+- `data/cleaned_advertising.csv`
+- `outputs/graphs/histogram.png`
+- `outputs/graphs/boxplot.png`
+- `outputs/graphs/correlation_heatmap.png`
+- `outputs/graphs/pairplot.png`
+- `outputs/graphs/sales_distribution.png`
+- `outputs/graphs/tv_vs_sales.png`
+- `outputs/graphs/radio_vs_sales.png`
+- `outputs/graphs/newspaper_vs_sales.png`
+- `outputs/graphs/region_vs_sales.png`
