@@ -47,7 +47,7 @@ def get_dataset_summary(dataset: pd.DataFrame) -> dict[str, object]:
         "columns": int(dataset.shape[1]),
         "avg_sales": round(float(dataset["Sales"].mean()), 2),
         "max_sales": round(float(dataset["Sales"].max()), 2),
-        "regions": sorted(dataset["Region"].dropna().astype(str).unique().tolist()),
+        "regions": REGION_OPTIONS,
     }
 
 
